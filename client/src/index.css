@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Styles ─── */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply bg-dark-950 text-dark-100 font-sans antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-500;
+  }
+}
+
+/* ─── Component Styles ─── */
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply bg-dark-800/60 backdrop-blur-xl border border-dark-700/50 rounded-2xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 via-primary-300 to-accent-400 bg-clip-text text-transparent;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-500 
+           text-white font-semibold rounded-xl
+           hover:from-primary-500 hover:to-primary-400 
+           active:scale-[0.98] transition-all duration-200
+           shadow-lg shadow-primary-600/25 hover:shadow-primary-500/40
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply px-6 py-3 bg-dark-700/80 border border-dark-600 
+           text-dark-200 font-semibold rounded-xl
+           hover:bg-dark-600/80 hover:border-dark-500 hover:text-white
+           active:scale-[0.98] transition-all duration-200;
+  }
+
+  /* Danger button */
+  .btn-danger {
+    @apply px-6 py-3 bg-red-600/90 text-white font-semibold rounded-xl
+           hover:bg-red-500 active:scale-[0.98] transition-all duration-200
+           shadow-lg shadow-red-600/25;
+  }
+
+  /* Form input */
+  .input {
+    @apply w-full px-4 py-3 bg-dark-800/80 border border-dark-600/50 rounded-xl
+           text-dark-100 placeholder-dark-400
+           focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20
+           transition-all duration-200;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-500/20 text-primary-300 border border-primary-500/30;
+  }
+
+  .badge-accent {
+    @apply badge bg-accent-500/20 text-accent-300 border border-accent-500/30;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/30;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-500/20 text-red-300 border border-red-500/30;
+  }
+
+  /* Flash sale fire glow */
+  .fire-glow {
+    @apply relative;
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.3), 
+                0 0 60px rgba(249, 115, 22, 0.1);
+  }
+}
+
+/* ─── Utility Styles ─── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
