@@ -4,10 +4,31 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="FlashMart — Auto-Scaling Flash-Sale E-Commerce Platform. Lightning deals with real-time countdowns, backed by AWS auto-scaling infrastructure." />
-    <title>FlashMart — Flash Sale Platform</title>
+    <meta name="description" content="FlashMart — Auto-Scaling Flash-Sale Platform. Editorial Edition." />
+    
+    <!-- Google Fonts: Space Grotesk (Headers/Display) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>FlashMart — The Editorial Issue</title>
+    
+    <!-- Inline script to apply theme early and prevent flash of unstyled content -->
+    <script>
+      (function() {
+        try {
+          var savedTheme = localStorage.getItem('flashmart_theme');
+          var systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body>
+  <body class="bg-surface text-foreground transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

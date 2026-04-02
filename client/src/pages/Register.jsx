@@ -39,31 +39,31 @@ const Register = () => {
             <HiBolt className="w-10 h-10 text-accent-500" />
             <span className="text-2xl font-bold gradient-text">FlashMart</span>
           </Link>
-          <h1 className="text-2xl font-bold text-white">Create your account</h1>
-          <p className="text-dark-400 mt-1">Join FlashMart for exclusive flash deals</p>
+          <h1 className="text-2xl font-bold text-foreground">Create your account</h1>
+          <p className="text-muted mt-1">Join FlashMart for exclusive flash deals</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5 animate-slide-up">
+        <form onSubmit={handleSubmit} className="block-card p-8 space-y-5 animate-slide-up">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-dark-300 mb-1.5">Full Name</label>
+            <label htmlFor="name" className="block text-sm font-medium text-muted mb-1.5">Full Name</label>
             <div className="relative">
-              <HiOutlineUser className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400" />
+              <HiOutlineUser className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
               <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" required className="input !pl-12" />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-dark-300 mb-1.5">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-muted mb-1.5">Email</label>
             <div className="relative">
-              <HiOutlineEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400" />
+              <HiOutlineEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
               <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" required className="input !pl-12" />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-dark-300 mb-1.5">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-muted mb-1.5">Password</label>
             <div className="relative">
-              <HiOutlineLockClosed className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400" />
+              <HiOutlineLockClosed className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
               <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Min. 6 characters" required minLength={6} className="input !pl-12" />
             </div>
           </div>
@@ -73,7 +73,7 @@ const Register = () => {
           </button>
         </form>
 
-        <p className="text-center text-dark-400 text-sm mt-6">
+        <p className="text-center text-muted text-sm mt-6">
           Already have an account?{' '}
           <Link to="/login" className="text-primary-400 hover:text-primary-300 font-medium">Sign in</Link>
         </p>

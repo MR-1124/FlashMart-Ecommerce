@@ -1,10 +1,6 @@
-// ============================================================
-// src/components/products/ProductCard.jsx
-// ============================================================
-
 import { Link } from 'react-router-dom';
 import { HiOutlineShoppingCart, HiStar } from 'react-icons/hi2';
-import { formatPrice, truncate } from '../../utils/formatters';
+import { formatPrice } from '../../utils/formatters';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import toast from 'react-hot-toast';
@@ -14,7 +10,7 @@ const ProductCard = ({ product, salePrice = null }) => {
   const { addToCart } = useCart();
 
   const handleAddToCart = async (e) => {
-    e.preventDefault(); // Prevent link navigation
+    e.preventDefault(); 
     e.stopPropagation();
 
     if (!isAuthenticated) {
@@ -24,7 +20,7 @@ const ProductCard = ({ product, salePrice = null }) => {
 
     try {
       await addToCart(product.id || product.product_id);
-      toast.success('Added to cart!');
+      toast.success('Added to collection!');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Failed to add to cart.');
     }
@@ -38,67 +34,58 @@ const ProductCard = ({ product, salePrice = null }) => {
   return (
     <Link
       to={`/products/${productId}`}
-      className="group glass-card overflow-hidden hover:border-primary-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary-500/5"
+      className="group flex flex-col items-start"
     >
-      {/* Image */}
-      <div className="relative aspect-square bg-dark-800 overflow-hidden">
-        <div className="w-full h-full bg-gradient-to-br from-dark-700 to-dark-800 flex items-center justify-center">
-          <span className="text-4xl opacity-30">📦</span>
+      {/* Image Block */}
+      <div className="relative aspect-[4/5] w-full border-2 border-borderline bg-muted/5 overflow-hidden mb-4 transition-transform duration-500 group-hover:-translate-y-2">
+        <div className="w-full h-full flex items-center justify-center grayscale group-hover:grayscale-0 transition-all duration-500">
+          <span className="text-5xl opacity-20">📦</span>
         </div>
 
-        {/* Discount Badge */}
+        {/* Badges */}
         {discount > 0 && (
-          <div className="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
-            -{discount}% OFF
+          <div className="absolute top-4 left-4 bg-foreground text-surface font-display font-bold uppercase tracking-widest text-[10px] px-3 py-1">
+            -{discount}% // SALE
           </div>
         )}
 
-        {/* Low Stock Badge */}
         {product.stock !== undefined && product.stock > 0 && product.stock <= 10 && (
-          <div className="absolute top-3 right-3 bg-amber-500/90 text-white text-xs font-bold px-2 py-1 rounded-lg">
-            Only {product.stock} left!
+          <div className="absolute bottom-4 left-4 border bg-surface/90 border-foreground text-foreground font-display font-bold uppercase tracking-widest text-[10px] px-3 py-1">
+            LAST {product.stock}
           </div>
         )}
 
-        {/* Add to Cart Overlay */}
-        <div className="absolute inset-0 bg-dark-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+        {/* Quick Add overlay */}
+        <div className="absolute inset-0 bg-foreground/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
           <button
             onClick={handleAddToCart}
-            className="btn-primary !py-2.5 !px-5 text-sm flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+            className="btn-primary !px-8 !py-3 tracking-widest text-xs translate-y-4 group-hover:translate-y-0 transition-transform duration-300 shadow-xl"
           >
-            <HiOutlineShoppingCart className="w-4 h-4" />
-            Add to Cart
+            + Quick Add
           </button>
         </div>
       </div>
 
-      {/* Info */}
-      <div className="p-4">
-        {product.category_name && (
-          <p className="text-xs text-primary-400 font-medium mb-1 uppercase tracking-wider">
-            {product.category_name}
-          </p>
-        )}
-
-        <h3 className="text-sm font-semibold text-dark-100 group-hover:text-white transition-colors line-clamp-2 mb-2">
-          {product.name}
-        </h3>
-
-        {/* Rating */}
-        {product.avg_rating > 0 && (
-          <div className="flex items-center gap-1 mb-2">
-            <HiStar className="w-4 h-4 text-amber-400" />
-            <span className="text-xs text-dark-400">
-              {parseFloat(product.avg_rating).toFixed(1)} · {product.total_sold || 0} sold
-            </span>
+      {/* Info Block */}
+      <div className="w-full flex flex-col gap-1">
+        <div className="flex justify-between items-start w-full">
+          <div>
+            {product.category_name && (
+              <p className="font-display font-bold uppercase tracking-widest text-[10px] text-muted mb-1">
+                {product.category_name}
+              </p>
+            )}
+            <h3 className="font-sans font-medium text-foreground text-sm uppercase group-hover:underline underline-offset-4 decoration-1">
+              {product.name}
+            </h3>
           </div>
-        )}
+        </div>
 
-        {/* Price */}
-        <div className="flex items-center gap-2">
-          <span className="text-lg font-bold text-white">{formatPrice(displayPrice)}</span>
+        {/* Pricing */}
+        <div className="flex items-center gap-3 mt-1">
+          <span className="font-display font-bold text-foreground">{formatPrice(displayPrice)}</span>
           {originalPrice && (
-            <span className="text-sm text-dark-500 line-through">{formatPrice(originalPrice)}</span>
+            <span className="font-display text-muted line-through text-xs">{formatPrice(originalPrice)}</span>
           )}
         </div>
       </div>

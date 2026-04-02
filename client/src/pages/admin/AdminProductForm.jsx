@@ -73,38 +73,38 @@ const AdminProductForm = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Link to="/admin/products" className="inline-flex items-center gap-2 text-dark-400 hover:text-white transition-colors mb-6">
+      <Link to="/admin/products" className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors mb-6">
         <HiArrowLeft className="w-4 h-4" /> Back to products
       </Link>
 
-      <h1 className="text-3xl font-bold text-white mb-8">
+      <h1 className="text-3xl font-bold text-foreground mb-8">
         {isEditing ? 'Edit Product' : 'Add New Product'}
       </h1>
 
-      <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
+      <form onSubmit={handleSubmit} className="block-card p-8 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Product Name *</label>
+          <label className="block text-sm font-medium text-muted mb-1.5">Product Name *</label>
           <input name="name" value={form.name} onChange={handleChange} required className="input" placeholder="e.g. Wireless Earbuds Pro" />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Description</label>
+          <label className="block text-sm font-medium text-muted mb-1.5">Description</label>
           <textarea name="description" value={form.description} onChange={handleChange} rows={4} className="input resize-none" placeholder="Product description..." />
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Price (₹) *</label>
+            <label className="block text-sm font-medium text-muted mb-1.5">Price (₹) *</label>
             <input name="price" type="number" step="0.01" value={form.price} onChange={handleChange} required className="input" placeholder="999" />
           </div>
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Stock *</label>
+            <label className="block text-sm font-medium text-muted mb-1.5">Stock *</label>
             <input name="stock" type="number" value={form.stock} onChange={handleChange} required className="input" placeholder="100" />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Category</label>
+          <label className="block text-sm font-medium text-muted mb-1.5">Category</label>
           <select name="category_id" value={form.category_id} onChange={handleChange} className="input">
             <option value="">Select category</option>
             {categories.map((c) => (
@@ -114,7 +114,7 @@ const AdminProductForm = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-dark-300 mb-1.5">Image URL</label>
+          <label className="block text-sm font-medium text-muted mb-1.5">Image URL</label>
           <input name="image_url" value={form.image_url} onChange={handleChange} className="input" placeholder="/images/product.jpg" />
         </div>
 

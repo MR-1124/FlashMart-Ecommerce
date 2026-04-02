@@ -46,8 +46,8 @@ const AdminOrders = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white">Manage Orders</h1>
-          <p className="text-dark-400">{orders.length} orders</p>
+          <h1 className="text-3xl font-bold text-foreground">Manage Orders</h1>
+          <p className="text-muted">{orders.length} orders</p>
         </div>
 
         <select
@@ -62,28 +62,28 @@ const AdminOrders = () => {
         </select>
       </div>
 
-      <div className="glass-card overflow-hidden">
+      <div className="block-card overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-dark-700/50">
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Order ID</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Customer</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Total</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Date</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Status</th>
+              <tr className="border-b border-borderline/50">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Order ID</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Customer</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Total</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Date</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Status</th>
               </tr>
             </thead>
             <tbody>
               {orders.map((o) => (
-                <tr key={o.id} className="border-b border-dark-700/30 hover:bg-dark-800/50 transition-colors">
-                  <td className="px-6 py-4 text-white font-medium">#{o.id}</td>
+                <tr key={o.id} className="border-b border-borderline/30 hover:bg-surface/50 transition-colors">
+                  <td className="px-6 py-4 text-foreground font-medium">#{o.id}</td>
                   <td className="px-6 py-4">
-                    <p className="text-white text-sm">{o.user_name}</p>
-                    <p className="text-dark-500 text-xs">{o.user_email}</p>
+                    <p className="text-foreground text-sm">{o.user_name}</p>
+                    <p className="text-muted text-xs">{o.user_email}</p>
                   </td>
-                  <td className="px-6 py-4 text-white font-medium">{formatPrice(o.total_amount)}</td>
-                  <td className="px-6 py-4 text-dark-300 text-sm">{formatDate(o.created_at)}</td>
+                  <td className="px-6 py-4 text-foreground font-medium">{formatPrice(o.total_amount)}</td>
+                  <td className="px-6 py-4 text-muted text-sm">{formatDate(o.created_at)}</td>
                   <td className="px-6 py-4">
                     <select
                       value={o.status}

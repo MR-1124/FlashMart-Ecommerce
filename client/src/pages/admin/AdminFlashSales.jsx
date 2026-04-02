@@ -55,10 +55,10 @@ const AdminFlashSales = () => {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
             <HiBolt className="text-accent-500" /> Flash Sales
           </h1>
-          <p className="text-dark-400">{sales.length} sales</p>
+          <p className="text-muted">{sales.length} sales</p>
         </div>
         <Link to="/admin/flash-sales/new" className="btn-primary flex items-center gap-2">
           <HiPlus className="w-5 h-5" /> Create Sale
@@ -66,34 +66,34 @@ const AdminFlashSales = () => {
       </div>
 
       {sales.length === 0 ? (
-        <div className="text-center py-20 glass-card">
+        <div className="text-center py-20 block-card">
           <HiBolt className="w-16 h-16 text-dark-600 mx-auto mb-4" />
-          <p className="text-dark-300 text-lg">No flash sales yet</p>
-          <p className="text-dark-500 text-sm mt-1">Create one to drive traffic!</p>
+          <p className="text-muted text-lg">No flash sales yet</p>
+          <p className="text-muted text-sm mt-1">Create one to drive traffic!</p>
         </div>
       ) : (
         <div className="space-y-4">
           {sales.map((sale) => {
             const status = getSaleStatus(sale);
             return (
-              <div key={sale.id} className="glass-card p-6">
+              <div key={sale.id} className="block-card p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-3 mb-1">
-                      <h3 className="text-lg font-bold text-white">{sale.title}</h3>
+                      <h3 className="text-lg font-bold text-foreground">{sale.title}</h3>
                       <span className={status.color}>{status.label}</span>
                     </div>
-                    <p className="text-dark-400 text-sm">
+                    <p className="text-muted text-sm">
                       {formatDateTime(sale.start_time)} — {formatDateTime(sale.end_time)}
                     </p>
-                    <p className="text-dark-500 text-sm mt-1">
+                    <p className="text-muted text-sm mt-1">
                       {sale.item_count || 0} products · {sale.total_sold || 0} sold
                     </p>
                   </div>
 
                   <button
                     onClick={() => handleDelete(sale.id)}
-                    className="p-2 text-dark-400 hover:text-red-400 transition-colors self-start"
+                    className="p-2 text-muted hover:text-red-400 transition-colors self-start"
                   >
                     <HiOutlineTrash className="w-5 h-5" />
                   </button>

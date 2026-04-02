@@ -44,47 +44,47 @@ const AdminProducts = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-white">Manage Products</h1>
-          <p className="text-dark-400">{products.length} products</p>
+          <h1 className="text-3xl font-bold text-foreground">Manage Products</h1>
+          <p className="text-muted">{products.length} products</p>
         </div>
         <Link to="/admin/products/new" className="btn-primary flex items-center gap-2">
           <HiPlus className="w-5 h-5" /> Add Product
         </Link>
       </div>
 
-      <div className="glass-card overflow-hidden">
+      <div className="block-card overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-dark-700/50">
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Product</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Category</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Price</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Stock</th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Sold</th>
-                <th className="text-right px-6 py-4 text-xs font-semibold text-dark-400 uppercase tracking-wider">Actions</th>
+              <tr className="border-b border-borderline/50">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Product</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Category</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Price</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Stock</th>
+                <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Sold</th>
+                <th className="text-right px-6 py-4 text-xs font-semibold text-muted uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
             <tbody>
               {products.map((p) => (
-                <tr key={p.id} className="border-b border-dark-700/30 hover:bg-dark-800/50 transition-colors">
+                <tr key={p.id} className="border-b border-borderline/30 hover:bg-surface/50 transition-colors">
                   <td className="px-6 py-4">
-                    <p className="text-white font-medium line-clamp-1">{p.name}</p>
+                    <p className="text-foreground font-medium line-clamp-1">{p.name}</p>
                   </td>
-                  <td className="px-6 py-4 text-dark-300 text-sm">{p.category_name || '—'}</td>
-                  <td className="px-6 py-4 text-white font-medium">{formatPrice(p.price)}</td>
+                  <td className="px-6 py-4 text-muted text-sm">{p.category_name || '—'}</td>
+                  <td className="px-6 py-4 text-foreground font-medium">{formatPrice(p.price)}</td>
                   <td className="px-6 py-4">
-                    <span className={`text-sm font-medium ${p.stock <= 10 ? 'text-amber-400' : 'text-dark-300'}`}>
+                    <span className={`text-sm font-medium ${p.stock <= 10 ? 'text-amber-400' : 'text-muted'}`}>
                       {p.stock}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-dark-300 text-sm">{p.total_sold}</td>
+                  <td className="px-6 py-4 text-muted text-sm">{p.total_sold}</td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2">
-                      <Link to={`/admin/products/${p.id}/edit`} className="p-2 text-dark-400 hover:text-primary-400 transition-colors">
+                      <Link to={`/admin/products/${p.id}/edit`} className="p-2 text-muted hover:text-primary-400 transition-colors">
                         <HiOutlinePencil className="w-4 h-4" />
                       </Link>
-                      <button onClick={() => handleDelete(p.id)} className="p-2 text-dark-400 hover:text-red-400 transition-colors">
+                      <button onClick={() => handleDelete(p.id)} className="p-2 text-muted hover:text-red-400 transition-colors">
                         <HiOutlineTrash className="w-4 h-4" />
                       </button>
                     </div>

@@ -35,31 +35,32 @@ const Pagination = ({ pagination, onPageChange }) => {
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="p-2 rounded-lg text-dark-400 hover:text-white hover:bg-dark-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-2 rounded-none text-foreground hover:bg-foreground hover:text-surface disabled:opacity-30 disabled:cursor-not-allowed transition-colors font-display uppercase tracking-widest text-xs font-bold border-2 border-transparent hover:border-foreground"
         >
-          <HiChevronLeft className="w-5 h-5" />
+          <HiChevronLeft className="w-5 h-5 mx-auto" />
         </button>
 
-        {getPageNumbers().map((page) => (
-          <button
-            key={page}
-            onClick={() => onPageChange(page)}
-            className={`w-10 h-10 rounded-lg text-sm font-medium transition-all duration-200 ${
-              page === currentPage
-                ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/25'
-                : 'text-dark-400 hover:text-white hover:bg-dark-700'
-            }`}
-          >
-            {page}
-          </button>
-        ))}
+        <div className="flex gap-2">
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => onPageChange(i + 1)}
+              className={`w-10 h-10 flex items-center justify-center font-display font-black text-sm transition-all border-2 border-transparent hover:border-foreground
+                ${currentPage === i + 1 
+                ? 'bg-foreground text-surface' 
+                : 'text-foreground hover:bg-foreground/5'}`}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
 
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="p-2 rounded-lg text-dark-400 hover:text-white hover:bg-dark-700 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          className="p-2 rounded-none text-foreground hover:bg-foreground hover:text-surface disabled:opacity-30 disabled:cursor-not-allowed transition-colors font-display uppercase tracking-widest text-xs font-bold border-2 border-transparent hover:border-foreground"
         >
-          <HiChevronRight className="w-5 h-5" />
+          <HiChevronRight className="w-5 h-5 mx-auto" />
         </button>
       </div>
     </div>

@@ -39,16 +39,16 @@ const Login = () => {
             <HiBolt className="w-10 h-10 text-accent-500" />
             <span className="text-2xl font-bold gradient-text">FlashMart</span>
           </Link>
-          <h1 className="text-2xl font-bold text-white">Welcome back</h1>
-          <p className="text-dark-400 mt-1">Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-foreground">Welcome back</h1>
+          <p className="text-muted mt-1">Sign in to your account</p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5 animate-slide-up">
+        <form onSubmit={handleSubmit} className="block-card p-8 space-y-5 animate-slide-up">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-dark-300 mb-1.5">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium text-muted mb-1.5">Email</label>
             <div className="relative">
-              <HiOutlineEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400" />
+              <HiOutlineEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
               <input
                 id="email"
                 type="email"
@@ -62,9 +62,9 @@ const Login = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-dark-300 mb-1.5">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-muted mb-1.5">Password</label>
             <div className="relative">
-              <HiOutlineLockClosed className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-dark-400" />
+              <HiOutlineLockClosed className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
               <input
                 id="password"
                 type="password"
@@ -86,8 +86,8 @@ const Login = () => {
           </button>
 
           {/* Demo Credentials */}
-          <div className="bg-dark-800/50 border border-dark-700/50 rounded-xl p-4 space-y-2">
-            <p className="text-xs text-dark-400 font-medium uppercase tracking-wider">Demo Credentials</p>
+          <div className="bg-surface/50 border border-borderline/50 rounded-xl p-4 space-y-2">
+            <p className="text-xs text-muted font-medium uppercase tracking-wider">Demo Credentials</p>
             <button
               type="button"
               onClick={() => { setEmail('admin@flashmart.com'); setPassword('Admin@123'); }}
@@ -106,7 +106,7 @@ const Login = () => {
           </div>
         </form>
 
-        <p className="text-center text-dark-400 text-sm mt-6">
+        <p className="text-center text-muted text-sm mt-6">
           Don&apos;t have an account?{' '}
           <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium">
             Sign up

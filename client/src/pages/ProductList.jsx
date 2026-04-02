@@ -86,8 +86,8 @@ const ProductList = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-white">Products</h1>
-        <p className="text-dark-400 mt-1">
+        <h1 className="text-3xl font-bold text-foreground">Products</h1>
+        <p className="text-muted mt-1">
           {pagination ? `${pagination.totalCount} products found` : 'Browse our catalog'}
         </p>
       </div>
@@ -107,8 +107,8 @@ const ProductList = () => {
       ) : products.length === 0 ? (
         <div className="text-center py-20">
           <p className="text-4xl mb-4">🔍</p>
-          <p className="text-dark-300 text-lg">No products found</p>
-          <p className="text-dark-500 text-sm mt-1">Try adjusting your search or filters</p>
+          <p className="text-muted text-lg">No products found</p>
+          <p className="text-muted text-sm mt-1">Try adjusting your search or filters</p>
         </div>
       ) : (
         <>

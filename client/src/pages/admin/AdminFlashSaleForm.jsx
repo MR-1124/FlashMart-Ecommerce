@@ -82,18 +82,18 @@ const AdminFlashSaleForm = () => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Link to="/admin/flash-sales" className="inline-flex items-center gap-2 text-dark-400 hover:text-white transition-colors mb-6">
+      <Link to="/admin/flash-sales" className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors mb-6">
         <HiArrowLeft className="w-4 h-4" /> Back to flash sales
       </Link>
 
-      <h1 className="text-3xl font-bold text-white mb-8">Create Flash Sale</h1>
+      <h1 className="text-3xl font-bold text-foreground mb-8">Create Flash Sale</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="glass-card p-8 space-y-5">
-          <h2 className="text-lg font-bold text-white">Sale Details</h2>
+        <div className="block-card p-8 space-y-5">
+          <h2 className="text-lg font-bold text-foreground">Sale Details</h2>
 
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Sale Title *</label>
+            <label className="block text-sm font-medium text-muted mb-1.5">Sale Title *</label>
             <input
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
@@ -104,7 +104,7 @@ const AdminFlashSaleForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-dark-300 mb-1.5">Description</label>
+            <label className="block text-sm font-medium text-muted mb-1.5">Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -116,7 +116,7 @@ const AdminFlashSaleForm = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-dark-300 mb-1.5">Start Time *</label>
+              <label className="block text-sm font-medium text-muted mb-1.5">Start Time *</label>
               <input
                 type="datetime-local"
                 value={form.start_time}
@@ -126,7 +126,7 @@ const AdminFlashSaleForm = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-dark-300 mb-1.5">End Time *</label>
+              <label className="block text-sm font-medium text-muted mb-1.5">End Time *</label>
               <input
                 type="datetime-local"
                 value={form.end_time}
@@ -139,22 +139,22 @@ const AdminFlashSaleForm = () => {
         </div>
 
         {/* Sale Items */}
-        <div className="glass-card p-8 space-y-5">
+        <div className="block-card p-8 space-y-5">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-white">Sale Products</h2>
+            <h2 className="text-lg font-bold text-foreground">Sale Products</h2>
             <button type="button" onClick={addItem} className="btn-secondary !py-2 !px-3 text-sm flex items-center gap-1">
               <HiPlus className="w-4 h-4" /> Add Product
             </button>
           </div>
 
           {form.items.length === 0 && (
-            <p className="text-dark-500 text-sm text-center py-4">No products added yet. Click "Add Product" above.</p>
+            <p className="text-muted text-sm text-center py-4">No products added yet. Click "Add Product" above.</p>
           )}
 
           {form.items.map((item, i) => (
-            <div key={i} className="grid grid-cols-12 gap-3 items-end bg-dark-800/50 p-4 rounded-xl">
+            <div key={i} className="grid grid-cols-12 gap-3 items-end bg-surface/50 p-4 rounded-xl">
               <div className="col-span-5">
-                <label className="block text-xs text-dark-400 mb-1">Product</label>
+                <label className="block text-xs text-muted mb-1">Product</label>
                 <select
                   value={item.product_id}
                   onChange={(e) => updateItem(i, 'product_id', e.target.value)}
@@ -168,7 +168,7 @@ const AdminFlashSaleForm = () => {
                 </select>
               </div>
               <div className="col-span-3">
-                <label className="block text-xs text-dark-400 mb-1">Sale Price (₹)</label>
+                <label className="block text-xs text-muted mb-1">Sale Price (₹)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -180,7 +180,7 @@ const AdminFlashSaleForm = () => {
                 />
               </div>
               <div className="col-span-3">
-                <label className="block text-xs text-dark-400 mb-1">Sale Stock</label>
+                <label className="block text-xs text-muted mb-1">Sale Stock</label>
                 <input
                   type="number"
                   value={item.sale_stock}
@@ -191,7 +191,7 @@ const AdminFlashSaleForm = () => {
                 />
               </div>
               <div className="col-span-1">
-                <button type="button" onClick={() => removeItem(i)} className="p-2 text-dark-400 hover:text-red-400 transition-colors">
+                <button type="button" onClick={() => removeItem(i)} className="p-2 text-muted hover:text-red-400 transition-colors">
                   <HiOutlineTrash className="w-4 h-4" />
                 </button>
               </div>

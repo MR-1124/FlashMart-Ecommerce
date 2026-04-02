@@ -1,7 +1,3 @@
-// ============================================================
-// src/components/flash-sale/CountdownTimer.jsx
-// ============================================================
-
 import { useState, useEffect } from 'react';
 
 const CountdownTimer = ({ targetDate, label = 'Ends in' }) => {
@@ -33,29 +29,29 @@ const CountdownTimer = ({ targetDate, label = 'Ends in' }) => {
   }, [targetDate]);
 
   if (!timeLeft) {
-    return <span className="text-dark-400 text-sm">Sale ended</span>;
+    return <span className="font-display font-medium uppercase tracking-widest text-muted text-sm">Sale Concluded</span>;
   }
 
   const TimeBlock = ({ value, unit }) => (
     <div className="flex flex-col items-center">
-      <div className="bg-dark-900/80 backdrop-blur border border-accent-500/30 rounded-xl w-16 h-16 flex items-center justify-center">
-        <span className="text-2xl font-bold text-white tabular-nums">
+      <div className="border-[3px] border-surface bg-foreground text-surface w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
+        <span className="font-display font-black text-3xl sm:text-4xl tabular-nums">
           {String(value).padStart(2, '0')}
         </span>
       </div>
-      <span className="text-[10px] text-dark-400 uppercase tracking-wider mt-1.5 font-medium">{unit}</span>
+      <span className="font-display font-bold text-[10px] sm:text-xs uppercase tracking-widest mt-2">{unit}</span>
     </div>
   );
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <span className="text-sm text-accent-300 font-medium uppercase tracking-wider">{label}</span>
-      <div className="flex items-center gap-2">
-        <TimeBlock value={timeLeft.hours} unit="Hours" />
-        <span className="text-2xl text-accent-400 font-bold animate-pulse mb-4">:</span>
-        <TimeBlock value={timeLeft.minutes} unit="Min" />
-        <span className="text-2xl text-accent-400 font-bold animate-pulse mb-4">:</span>
-        <TimeBlock value={timeLeft.seconds} unit="Sec" />
+    <div className="flex flex-col items-start gap-4">
+      <span className="font-display font-bold uppercase tracking-widest text-surface/70 text-sm border-b border-surface/30 pb-1 pr-6">{label}</span>
+      <div className="flex items-center gap-3">
+        <TimeBlock value={timeLeft.hours} unit="HR" />
+        <span className="font-display font-black text-3xl sm:text-4xl text-surface animate-pulse mb-6">:</span>
+        <TimeBlock value={timeLeft.minutes} unit="MIN" />
+        <span className="font-display font-black text-3xl sm:text-4xl text-surface animate-pulse mb-6">:</span>
+        <TimeBlock value={timeLeft.seconds} unit="SEC" />
       </div>
     </div>
   );

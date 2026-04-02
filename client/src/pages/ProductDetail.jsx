@@ -52,20 +52,20 @@ const ProductDetail = () => {
   };
 
   if (loading) return <LoadingSpinner text="Loading product..." />;
-  if (!product) return <div className="text-center py-20 text-dark-300">Product not found</div>;
+  if (!product) return <div className="text-center py-20 text-muted">Product not found</div>;
 
   const inStock = product.stock > 0;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Back link */}
-      <Link to="/products" className="inline-flex items-center gap-2 text-dark-400 hover:text-white transition-colors mb-6">
+      <Link to="/products" className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors mb-6">
         <HiArrowLeft className="w-4 h-4" /> Back to products
       </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {/* Image */}
-        <div className="glass-card aspect-square flex items-center justify-center">
+        <div className="block-card aspect-square flex items-center justify-center">
           <span className="text-8xl opacity-20">📦</span>
         </div>
 
@@ -75,7 +75,7 @@ const ProductDetail = () => {
             <span className="badge-primary mb-3">{product.category_name}</span>
           )}
 
-          <h1 className="text-3xl font-bold text-white mb-3">{product.name}</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-3">{product.name}</h1>
 
           {/* Rating */}
           {product.avg_rating > 0 && (
@@ -85,7 +85,7 @@ const ProductDetail = () => {
                   <HiStar key={i} className={`w-5 h-5 ${i < Math.round(product.avg_rating) ? 'text-amber-400' : 'text-dark-600'}`} />
                 ))}
               </div>
-              <span className="text-dark-400 text-sm">
+              <span className="text-muted text-sm">
                 {parseFloat(product.avg_rating).toFixed(1)} · {product.total_sold} sold
               </span>
             </div>
@@ -93,11 +93,11 @@ const ProductDetail = () => {
 
           {/* Price */}
           <div className="flex items-baseline gap-3 mb-6">
-            <span className="text-4xl font-extrabold text-white">{formatPrice(product.price)}</span>
+            <span className="text-4xl font-extrabold text-foreground">{formatPrice(product.price)}</span>
           </div>
 
           {/* Description */}
-          <p className="text-dark-300 leading-relaxed mb-8">{product.description}</p>
+          <p className="text-muted leading-relaxed mb-8">{product.description}</p>
 
           {/* Stock Status */}
           <div className="mb-6">
@@ -114,17 +114,17 @@ const ProductDetail = () => {
           {inStock && (
             <div className="flex flex-col sm:flex-row gap-4">
               {/* Quantity Selector */}
-              <div className="flex items-center glass-card !rounded-xl overflow-hidden">
+              <div className="flex items-center block-card !rounded-xl overflow-hidden">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 py-3 text-dark-300 hover:text-white hover:bg-dark-700 transition-colors"
+                  className="px-4 py-3 text-muted hover:text-foreground hover:bg-surface transition-colors"
                 >
                   <HiMinus className="w-5 h-5" />
                 </button>
-                <span className="px-6 py-3 text-white font-semibold min-w-[60px] text-center">{quantity}</span>
+                <span className="px-6 py-3 text-foreground font-semibold min-w-[60px] text-center">{quantity}</span>
                 <button
                   onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                  className="px-4 py-3 text-dark-300 hover:text-white hover:bg-dark-700 transition-colors"
+                  className="px-4 py-3 text-muted hover:text-foreground hover:bg-surface transition-colors"
                 >
                   <HiPlus className="w-5 h-5" />
                 </button>

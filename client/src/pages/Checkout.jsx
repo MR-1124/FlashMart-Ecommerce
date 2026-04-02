@@ -39,7 +39,7 @@ const Checkout = () => {
     return (
       <div className="max-w-lg mx-auto px-4 py-20 text-center">
         <HiOutlineCheckCircle className="w-16 h-16 text-dark-600 mx-auto mb-4" />
-        <p className="text-dark-300 text-lg mb-6">Your cart is empty</p>
+        <p className="text-muted text-lg mb-6">Your cart is empty</p>
         <Link to="/products" className="btn-primary">Browse Products</Link>
       </div>
     );
@@ -47,20 +47,20 @@ const Checkout = () => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Link to="/cart" className="inline-flex items-center gap-2 text-dark-400 hover:text-white transition-colors mb-6">
+      <Link to="/cart" className="inline-flex items-center gap-2 text-muted hover:text-foreground transition-colors mb-6">
         <HiArrowLeft className="w-4 h-4" /> Back to cart
       </Link>
 
-      <h1 className="text-3xl font-bold text-white mb-8">Checkout</h1>
+      <h1 className="text-3xl font-bold text-foreground mb-8">Checkout</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
         {/* Form */}
         <form onSubmit={handleSubmit} className="md:col-span-3 space-y-5">
-          <div className="glass-card p-6 space-y-5">
-            <h2 className="text-lg font-bold text-white">Shipping Details</h2>
+          <div className="block-card p-6 space-y-5">
+            <h2 className="text-lg font-bold text-foreground">Shipping Details</h2>
 
             <div>
-              <label htmlFor="address" className="block text-sm font-medium text-dark-300 mb-1.5">Shipping Address</label>
+              <label htmlFor="address" className="block text-sm font-medium text-muted mb-1.5">Shipping Address</label>
               <textarea
                 id="address"
                 rows={3}
@@ -73,7 +73,7 @@ const Checkout = () => {
             </div>
 
             <div>
-              <label htmlFor="phone" className="block text-sm font-medium text-dark-300 mb-1.5">Phone Number</label>
+              <label htmlFor="phone" className="block text-sm font-medium text-muted mb-1.5">Phone Number</label>
               <input
                 id="phone"
                 type="tel"
@@ -93,30 +93,30 @@ const Checkout = () => {
 
         {/* Summary */}
         <div className="md:col-span-2">
-          <div className="glass-card p-6">
-            <h3 className="text-lg font-bold text-white mb-4">Order Summary</h3>
+          <div className="block-card p-6">
+            <h3 className="text-lg font-bold text-foreground mb-4">Order Summary</h3>
 
             <div className="space-y-3 max-h-60 overflow-y-auto">
               {cartItems.map((item) => (
                 <div key={item.id} className="flex justify-between text-sm">
-                  <span className="text-dark-300 line-clamp-1 flex-1 pr-4">
+                  <span className="text-muted line-clamp-1 flex-1 pr-4">
                     {item.name} × {item.quantity}
                   </span>
-                  <span className="text-white font-medium">{formatPrice(item.price * item.quantity)}</span>
+                  <span className="text-foreground font-medium">{formatPrice(item.price * item.quantity)}</span>
                 </div>
               ))}
             </div>
 
-            <div className="border-t border-dark-700/50 mt-4 pt-4">
-              <div className="flex justify-between text-dark-300 text-sm">
+            <div className="border-t border-borderline/50 mt-4 pt-4">
+              <div className="flex justify-between text-muted text-sm">
                 <span>Subtotal ({totalItems} items)</span>
                 <span>{formatPrice(totalPrice)}</span>
               </div>
-              <div className="flex justify-between text-dark-300 text-sm mt-2">
+              <div className="flex justify-between text-muted text-sm mt-2">
                 <span>Shipping</span>
                 <span className="text-emerald-400">Free</span>
               </div>
-              <div className="flex justify-between text-white font-bold text-lg mt-3 pt-3 border-t border-dark-700/50">
+              <div className="flex justify-between text-foreground font-bold text-lg mt-3 pt-3 border-t border-borderline/50">
                 <span>Total</span>
                 <span>{formatPrice(totalPrice)}</span>
               </div>

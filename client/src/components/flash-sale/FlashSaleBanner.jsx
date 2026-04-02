@@ -1,10 +1,4 @@
-// ============================================================
-// src/components/flash-sale/FlashSaleBanner.jsx
-// ============================================================
-
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { HiBolt } from 'react-icons/hi2';
 import api from '../../api/axios';
 import CountdownTimer from './CountdownTimer';
 import ProductCard from '../products/ProductCard';
@@ -32,51 +26,56 @@ const FlashSaleBanner = () => {
   const { sale, items, status } = saleData;
 
   return (
-    <section className="relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0 bg-gradient-to-r from-accent-600/10 via-red-600/10 to-accent-600/10" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-red-500/10 rounded-full blur-3xl" />
+    <section className="w-full">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="flex flex-col lg:flex-row border-x-2 border-borderline">
+          
+          {/* Left Spread: The Editorial Headline */}
+          <div className="w-full lg:w-1/3 p-8 lg:p-16 border-b-2 lg:border-b-0 lg:border-r-2 border-borderline flex flex-col justify-between bg-foreground text-surface">
+            <div>
+              <div className="inline-block border border-surface px-4 py-1 mb-6">
+                <span className="font-display font-bold uppercase tracking-widest text-xs">
+                  {status === 'upcoming' ? 'Coming Soon' : 'Live Event'}
+                </span>
+              </div>
+              <h2 className="font-display font-black text-5xl sm:text-7xl uppercase tracking-tighter leading-none mb-6">
+                {sale.title}
+              </h2>
+              {sale.description && (
+                <p className="font-sans text-surface/80 max-w-sm font-medium mb-12">
+                  {sale.description}
+                </p>
+              )}
+            </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 bg-accent-500/20 border border-accent-500/30 rounded-full px-5 py-2 mb-4">
-            <HiBolt className="w-5 h-5 text-accent-400 animate-pulse" />
-            <span className="text-accent-300 font-bold text-sm uppercase tracking-wider">
-              {status === 'upcoming' ? 'Coming Soon' : 'Flash Sale Live'}
-            </span>
-            <HiBolt className="w-5 h-5 text-accent-400 animate-pulse" />
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-2">
-            {sale.title}
-          </h2>
-          {sale.description && (
-            <p className="text-dark-300 max-w-lg mx-auto">{sale.description}</p>
-          )}
-
-          {/* Countdown */}
-          <div className="mt-6">
-            <CountdownTimer
-              targetDate={sale.end_time}
-              label={status === 'upcoming' ? 'Starts in' : 'Ends in'}
-            />
-          </div>
-        </div>
-
-        {/* Sale Products */}
-        {items && items.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-            {items.map((item) => (
-              <ProductCard
-                key={item.id}
-                product={item}
-                salePrice={item.sale_price}
+            <div className="mt-auto">
+              <CountdownTimer
+                targetDate={sale.end_time}
+                label={status === 'upcoming' ? 'Kicks Off' : 'Concluding'}
               />
-            ))}
+            </div>
           </div>
-        )}
+
+          {/* Right Spread: The Product Highlights */}
+          <div className="w-full lg:w-2/3 p-4 lg:p-12">
+            {items && items.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
+                {items.map((item) => (
+                  <ProductCard
+                    key={item.id}
+                    product={item}
+                    salePrice={item.sale_price}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="h-full flex items-center justify-center">
+                <p className="font-display font-bold uppercase tracking-widest text-muted">Curating pieces...</p>
+              </div>
+            )}
+          </div>
+
+        </div>
       </div>
     </section>
   );
